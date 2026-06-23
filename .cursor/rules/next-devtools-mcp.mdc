@@ -1,0 +1,6 @@
+---
+description: "This rule is to make AI assistant automatically call the init tool at the start of every Next.js session without being asked."
+alwaysApply: true
+---
+
+When working with this project, always call the init tool from next-devtools-mcp at the start of the session to establish proper context and documentation requirements.

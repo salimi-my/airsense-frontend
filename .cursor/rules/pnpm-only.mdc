@@ -1,0 +1,13 @@
+---
+description: Enforce pnpm as the only package manager for agent commands
+alwaysApply: true
+---
+
+When working with this repository, use `pnpm` only for package and script commands.
+
+Rules:
+- Always use `pnpm` equivalents instead of `npm`, `yarn`, or `bun`.
+- Use `pnpm install` for dependency installation.
+- Use `pnpm add` / `pnpm remove` for dependency changes.
+- Use `pnpm run <script>` or `pnpm <script>` for scripts.
+- Never suggest or execute `npm`, `npx`, `yarn`, or `bun` commands unless the user explicitly asks for them.

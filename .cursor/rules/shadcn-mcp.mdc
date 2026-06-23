@@ -1,0 +1,15 @@
+---
+description: "Guide AI to use the shadcn MCP tools when adding or generating UI components."
+alwaysApply: true
+---
+
+# shadcn MCP Usage
+
+When adding, editing, or generating shadcn/ui components in this project, always use the shadcn MCP tools:
+
+1. **Before adding a component** — call `get_project_registries` to check which registries are configured.
+2. **Finding components** — use `search_items_in_registries` or `list_items_in_registries` instead of guessing availability.
+3. **Installing components** — call `get_add_command_for_items` to get the correct `pnpm dlx shadcn` command.
+4. **After creating/modifying components** — call `get_audit_checklist` to verify everything is correct.
+
+Never manually write shadcn component boilerplate when the MCP can provide it via the registry.
