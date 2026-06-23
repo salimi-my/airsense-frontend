@@ -1,7 +1,16 @@
-import * as React from "react"
-import { cva, type VariantProps } from "class-variance-authority"
+/*
+ * CUSTOMIZATIONS MADE TO STANDARD SHADCN ALERT COMPONENT:
+ *
+ * 1. Added new "success" variant with emerald styling for success alerts
+ * 2. Enhanced "destructive" variant by adding border styling (border-destructive/50)
+ *
+ * Changes maintain full compatibility with standard shadcn Alert API while extending functionality.
+ */
 
-import { cn } from "@/lib/utils"
+import { cva, type VariantProps } from "class-variance-authority";
+import * as React from "react";
+
+import { cn } from "@/lib/utils";
 
 const alertVariants = cva(
   "group/alert relative grid w-full gap-0.5 rounded-lg border px-4 py-3 text-left text-sm has-data-[slot=alert-action]:relative has-data-[slot=alert-action]:pr-18 has-[>svg]:grid-cols-[auto_1fr] has-[>svg]:gap-x-2.5 *:[svg]:row-span-2 *:[svg]:translate-y-0.5 *:[svg]:text-current *:[svg:not([class*='size-'])]:size-4",
@@ -9,15 +18,21 @@ const alertVariants = cva(
     variants: {
       variant: {
         default: "bg-card text-card-foreground",
+        // ORIGINAL: "text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+        // CUSTOM: Added border-destructive/50 for enhanced visual styling
         destructive:
-          "bg-card text-destructive *:data-[slot=alert-description]:text-destructive/90 *:[svg]:text-current",
+          "border-destructive/50 text-destructive bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-destructive/90",
+        // ORIGINAL: This variant did not exist in standard shadcn
+        // CUSTOM: Added completely new success variant for positive feedback
+        success:
+          "border-emerald-500/50 text-emerald-500 bg-card [&>svg]:text-current *:data-[slot=alert-description]:text-emerald-500/90",
       },
     },
     defaultVariants: {
       variant: "default",
     },
-  }
-)
+  },
+);
 
 function Alert({
   className,
@@ -31,7 +46,7 @@ function Alert({
       className={cn(alertVariants({ variant }), className)}
       {...props}
     />
-  )
+  );
 }
 
 function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
@@ -39,12 +54,12 @@ function AlertTitle({ className, ...props }: React.ComponentProps<"div">) {
     <div
       data-slot="alert-title"
       className={cn(
-        "font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground",
-        className
+        "[&_a]:hover:text-foreground font-medium group-has-[>svg]/alert:col-start-2 [&_a]:underline [&_a]:underline-offset-3",
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function AlertDescription({
@@ -55,12 +70,12 @@ function AlertDescription({
     <div
       data-slot="alert-description"
       className={cn(
-        "text-sm text-balance text-muted-foreground md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_a]:hover:text-foreground [&_p:not(:last-child)]:mb-4",
-        className
+        "text-muted-foreground [&_a]:hover:text-foreground text-sm text-balance md:text-pretty [&_a]:underline [&_a]:underline-offset-3 [&_p:not(:last-child)]:mb-4",
+        className,
       )}
       {...props}
     />
-  )
+  );
 }
 
 function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
@@ -70,7 +85,7 @@ function AlertAction({ className, ...props }: React.ComponentProps<"div">) {
       className={cn("absolute top-2.5 right-3", className)}
       {...props}
     />
-  )
+  );
 }
 
-export { Alert, AlertTitle, AlertDescription, AlertAction }
+export { Alert, AlertAction, AlertDescription, AlertTitle };

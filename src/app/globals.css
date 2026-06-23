@@ -1,3 +1,14 @@
+/* 
+ * CUSTOMIZATIONS MADE TO STANDARD SHADCN GLOBAL CSS:
+ *
+ * 1. Added custom styling for collapsible content
+ * 2. Added custom styling for link hover
+ * 3. Added custom color variables for backdrop, sidebar, and card
+ * 4. Changed background color to backdrop
+ *
+ * Changes maintain full compatibility with standard shadcn global CSS while extending functionality.
+ */
+
 @import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
@@ -7,9 +18,9 @@
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-sans);
+  --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
-  --font-heading: var(--font-sans);
+  --font-heading: var(--font-geist-sans);
   --color-sidebar-ring: var(--sidebar-ring);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
@@ -55,8 +66,8 @@
   --card-foreground: oklch(0.148 0.004 228.8);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.148 0.004 228.8);
-  --primary: oklch(0.5 0.134 242.749);
-  --primary-foreground: oklch(0.977 0.013 236.62);
+  --primary: oklch(0.511 0.096 186.391);
+  --primary-foreground: oklch(0.984 0.014 180.72);
   --secondary: oklch(0.967 0.001 286.375);
   --secondary-foreground: oklch(0.21 0.006 285.885);
   --muted: oklch(0.963 0.002 197.1);
@@ -66,17 +77,17 @@
   --destructive: oklch(0.577 0.245 27.325);
   --border: oklch(0.925 0.005 214.3);
   --input: oklch(0.925 0.005 214.3);
-  --ring: oklch(0.723 0.014 214.4);
-  --chart-1: oklch(0.828 0.111 230.318);
-  --chart-2: oklch(0.685 0.169 237.323);
-  --chart-3: oklch(0.588 0.158 241.966);
-  --chart-4: oklch(0.5 0.134 242.749);
-  --chart-5: oklch(0.443 0.11 240.79);
+  --ring: oklch(0.511 0.096 186.391);
+  --chart-1: oklch(0.55 0.11 186.391);
+  --chart-2: oklch(0.58 0.13 228);
+  --chart-3: oklch(0.8214 0.16 82.5337);
+  --chart-4: oklch(0.58 0.15 278);
+  --chart-5: oklch(0.5919 0.2186 10.5826);
   --radius: 0.625rem;
   --sidebar: oklch(0.987 0.002 197.1);
   --sidebar-foreground: oklch(0.148 0.004 228.8);
-  --sidebar-primary: oklch(0.588 0.158 241.966);
-  --sidebar-primary-foreground: oklch(0.977 0.013 236.62);
+  --sidebar-primary: oklch(0.6 0.118 184.704);
+  --sidebar-primary-foreground: oklch(0.984 0.014 180.72);
   --sidebar-accent: oklch(0.963 0.002 197.1);
   --sidebar-accent-foreground: oklch(0.218 0.008 223.9);
   --sidebar-border: oklch(0.925 0.005 214.3);
@@ -90,8 +101,8 @@
   --card-foreground: oklch(0.987 0.002 197.1);
   --popover: oklch(0.218 0.008 223.9);
   --popover-foreground: oklch(0.987 0.002 197.1);
-  --primary: oklch(0.443 0.11 240.79);
-  --primary-foreground: oklch(0.977 0.013 236.62);
+  --primary: oklch(0.437 0.078 188.216);
+  --primary-foreground: oklch(0.984 0.014 180.72);
   --secondary: oklch(0.274 0.006 286.033);
   --secondary-foreground: oklch(0.985 0 0);
   --muted: oklch(0.275 0.011 216.9);
@@ -101,30 +112,215 @@
   --destructive: oklch(0.704 0.191 22.216);
   --border: oklch(1 0 0 / 10%);
   --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.56 0.021 213.5);
-  --chart-1: oklch(0.828 0.111 230.318);
-  --chart-2: oklch(0.685 0.169 237.323);
-  --chart-3: oklch(0.588 0.158 241.966);
-  --chart-4: oklch(0.5 0.134 242.749);
-  --chart-5: oklch(0.443 0.11 240.79);
+  --ring: oklch(0.704 0.14 182.503);
+  --chart-1: oklch(0.704 0.14 182.503);
+  --chart-2: oklch(0.72 0.11 228);
+  --chart-3: oklch(0.82 0.14 82);
+  --chart-4: oklch(0.72 0.14 278);
+  --chart-5: oklch(0.68 0.18 12);
   --sidebar: oklch(0.218 0.008 223.9);
   --sidebar-foreground: oklch(0.987 0.002 197.1);
-  --sidebar-primary: oklch(0.685 0.169 237.323);
-  --sidebar-primary-foreground: oklch(0.293 0.066 243.157);
+  --sidebar-primary: oklch(0.704 0.14 182.503);
+  --sidebar-primary-foreground: oklch(0.277 0.046 192.524);
   --sidebar-accent: oklch(0.275 0.011 216.9);
   --sidebar-accent-foreground: oklch(0.987 0.002 197.1);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.56 0.021 213.5);
 }
 
+/* START CUSTOM: Added custom color variables */
+@theme inline {
+  --color-backdrop: var(--backdrop);
+  --color-header: var(--backdrop);
+}
+
+:root {
+  --backdrop: oklch(98.265% 0.00511 229.665);
+  --sidebar: oklch(1 0 0);
+
+  /* Derived primary tints — used repeatedly across component overrides */
+  --primary-tint-8: color-mix(in oklch, var(--primary) 8%, transparent);
+  --primary-tint-10-white: color-mix(
+    in oklch,
+    var(--primary) 10%,
+    oklch(1 0 0)
+  );
+  --primary-tint-15: color-mix(in oklch, var(--primary) 15%, transparent);
+}
+
+.dark {
+  --backdrop: oklch(18.841% 0.00516 219.934);
+  --card: oklch(0.148 0.004 228.8);
+  --sidebar: oklch(0.148 0.004 228.8);
+}
+/* END CUSTOM: Added custom color variables */
+
 @layer base {
   * {
     @apply border-border outline-ring/50;
   }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-backdrop text-foreground font-sans;
   }
+
   html {
     @apply font-sans;
+    -webkit-tap-highlight-color: transparent;
   }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+
+  /* START CUSTOM: Added custom styling for collapsible content */
+  .CollapsibleContent {
+    overflow: hidden;
+  }
+
+  .CollapsibleContent[data-state="open"] {
+    animation: slideDown 300ms ease-out;
+  }
+
+  .CollapsibleContent[data-state="closed"] {
+    animation: slideUp 300ms ease-out;
+  }
+
+  @keyframes slideDown {
+    from {
+      height: 0;
+    }
+    to {
+      height: var(--radix-collapsible-content-height);
+    }
+  }
+
+  @keyframes slideUp {
+    from {
+      height: var(--radix-collapsible-content-height);
+    }
+    to {
+      height: 0;
+    }
+  }
+  /* END CUSTOM: Added custom styling for collapsible content */
+
+  /* START CUSTOM: Added custom styling for link hover */
+  .link-hover {
+    @apply after:bg-primary relative after:absolute after:-bottom-0.5 after:left-0 after:h-[2px] after:w-full after:origin-bottom-right after:scale-x-0 after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-left hover:after:scale-x-100;
+  }
+  /* END CUSTOM: Added custom styling for link hover */
 }
+
+/*
+  * Component style overrides — kept outside @layer so they win the cascade
+  * over any layered (base / components / utilities) shadcn defaults without
+  * needing !important.
+  */
+
+/* START CUSTOM: Sidebar active and hover state colors */
+[data-sidebar="menu-button"][data-active="true"],
+.CollapsibleContent [data-sidebar="menu-sub-button"][data-active="true"] {
+  background-color: var(--primary);
+  color: white;
+}
+
+[data-sidebar="menu-button"]:not([data-active="true"]):hover,
+[data-sidebar="menu-sub-button"]:not([data-active="true"]):hover {
+  background-color: var(--primary-tint-15);
+  color: var(--primary);
+}
+/* END CUSTOM: Sidebar active and hover state colors */
+
+/* START CUSTOM: Command search box lighter background */
+[data-slot="command-input-wrapper"] [data-slot="input-group"] {
+  background-color: color-mix(in oklch, var(--input) 10%, transparent);
+  border-color: color-mix(in oklch, var(--input) 20%, transparent);
+}
+/* END CUSTOM: Command search box lighter background */
+
+/* START CUSTOM: Command item hover/selected state colors */
+[data-slot="command-item"][data-selected="true"],
+[data-slot="command-item"][aria-selected="true"] {
+  background-color: var(--primary-tint-8);
+  color: var(--primary);
+}
+/* END CUSTOM: Command item hover/selected state colors */
+
+/* START CUSTOM: Outline button sky border and hover */
+button[data-variant="outline"] {
+  border-color: var(--input);
+}
+
+button[data-variant="outline"]:hover,
+button[data-variant="outline"][aria-expanded="true"] {
+  background-color: var(--primary-tint-8);
+  color: var(--primary);
+}
+
+button[data-variant="outline"][aria-invalid="true"] {
+  border-color: var(--color-destructive);
+}
+/* END CUSTOM: Outline button sky border and hover */
+
+/* START CUSTOM: Radio card border color */
+[data-slot="field-label"]:has(> [data-slot="field"]) {
+  border-color: var(--input);
+}
+/* END CUSTOM: Radio card border color */
+
+/* START CUSTOM: Tabs active and hover state colors */
+[data-slot="tabs-list"]:not([data-variant="line"]) {
+  background-color: var(--primary-tint-8);
+}
+
+[data-slot="tabs-list"]:not([data-variant="line"])
+  [data-slot="tabs-trigger"][data-active],
+[data-slot="tabs-list"]:not([data-variant="line"])
+  [data-slot="tabs-trigger"][data-state="active"] {
+  background-color: var(--primary);
+  color: white;
+  border-color: transparent;
+  box-shadow: none;
+}
+
+[data-slot="tabs-list"]:not([data-variant="line"])
+  [data-slot="tabs-trigger"]:not([data-active]):not(
+    [data-state="active"]
+  ):hover {
+  background-color: var(--primary-tint-15);
+  color: var(--primary);
+}
+/* END CUSTOM: Tabs active and hover state colors */
+
+/* START CUSTOM: Sidebar inset background */
+[data-slot="sidebar-inset"] {
+  background-color: var(--color-backdrop);
+}
+/* END CUSTOM: Sidebar inset background */
+
+/* START CUSTOM: Dropdown menu item sky hover */
+[data-slot="dropdown-menu-item"]:focus,
+[data-slot="dropdown-menu-item"][data-highlighted],
+[data-slot="dropdown-menu-sub-trigger"]:focus,
+[data-slot="dropdown-menu-sub-trigger"][data-highlighted] {
+  background-color: var(--primary-tint-8);
+  color: var(--primary);
+}
+/* END CUSTOM: Dropdown menu item sky hover */
+
+/* START CUSTOM: Ghost button sky hover */
+[data-variant="ghost"]:hover,
+[data-variant="ghost"][aria-expanded="true"] {
+  background-color: var(--primary-tint-8);
+  color: var(--primary);
+}
+/* END CUSTOM: Ghost button sky hover */
+
+/* START CUSTOM: Avatar fallback sky background */
+[data-slot="avatar-fallback"] {
+  background-color: var(--primary-tint-10-white);
+  color: var(--primary);
+}
+/* END CUSTOM: Avatar fallback sky background */
