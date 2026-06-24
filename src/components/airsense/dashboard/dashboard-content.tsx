@@ -7,14 +7,14 @@ import { useMemo, useState } from "react";
 import { toast } from "sonner";
 import { useSWRConfig } from "swr";
 
-import { AQIMapDynamic } from "@/components/airsense/aqi-map-dynamic";
 import { AlertBanner } from "@/components/airsense/alert-banner";
-import { DashboardAdminStrip } from "@/components/airsense/dashboard/dashboard-admin-strip";
+import { AQIMapDynamic } from "@/components/airsense/aqi-map-dynamic";
 import { AssessmentConfidenceRadialChart } from "@/components/airsense/dashboard/assessment-confidence-radial-chart";
-import { ValleyBandRadialChart } from "@/components/airsense/dashboard/valley-band-radial-chart";
+import { DashboardAdminStrip } from "@/components/airsense/dashboard/dashboard-admin-strip";
 import { DashboardTrendChartSkeleton } from "@/components/airsense/dashboard/dashboard-chart-skeletons";
 import { DashboardStatsCards } from "@/components/airsense/dashboard/dashboard-stats-cards";
 import { RecentAssessments } from "@/components/airsense/dashboard/recent-assessments";
+import { ValleyBandRadialChart } from "@/components/airsense/dashboard/valley-band-radial-chart";
 import { TrendChart } from "@/components/airsense/trend-chart";
 import { Button } from "@/components/ui/button";
 import { Combobox } from "@/components/ui/combobox";
@@ -60,8 +60,11 @@ function getHealthProfileBadges(): string[] {
 
 export function DashboardContent() {
   const { user, mutate: mutateUser, isAdmin } = useUser();
-  const { dashboard, isLoading: dashboardLoading, mutate: mutateDashboard } =
-    useDashboard();
+  const {
+    dashboard,
+    isLoading: dashboardLoading,
+    mutate: mutateDashboard,
+  } = useDashboard();
   const { assessments, isLoading: assessmentsLoading } = useMyAssessments(10);
   const { stations, isLoading: stationsLoading } = useStations();
   const { mutate: globalMutate } = useSWRConfig();
@@ -122,8 +125,9 @@ export function DashboardContent() {
     <div className="min-w-0 space-y-6">
       <div className="flex w-full flex-col gap-3 xl:flex-row xl:items-center xl:justify-between xl:gap-4">
         <div className="min-w-0">
-          <h1 className="text-lg font-semibold leading-tight">
-            {greeting}{firstName ? `, ${firstName}` : ""}!
+          <h1 className="text-lg leading-tight font-semibold">
+            {greeting}
+            {firstName ? `, ${firstName}` : ""}!
           </h1>
           <p className="text-muted-foreground truncate text-sm">
             Your air quality snapshot for Klang Valley
@@ -144,7 +148,7 @@ export function DashboardContent() {
 
         <div className="flex w-full flex-col gap-2 sm:flex-row sm:items-center xl:w-auto">
           <div className="flex w-full min-w-0 items-center sm:w-auto">
-            <div className="border-input text-primary flex h-8 shrink-0 items-center gap-1.5 rounded-s-md border border-r-0 bg-sky-300/10 px-2 text-sm dark:bg-sky-900/50">
+            <div className="border-input text-primary flex h-8 shrink-0 items-center gap-1.5 rounded-s-md border border-r-0 bg-teal-300/10 px-2 text-sm dark:bg-teal-900/30">
               <MapPin className="size-4" />
               Station
             </div>
@@ -225,8 +229,8 @@ export function DashboardContent() {
               <MapPin className="text-muted-foreground mb-3 size-8" />
               <p className="text-sm font-medium">No home station selected</p>
               <p className="text-muted-foreground mt-1 max-w-sm text-xs">
-                Choose a station from the dropdown or use your location to see
-                a 7-day AQI trend for your area.
+                Choose a station from the dropdown or use your location to see a
+                7-day AQI trend for your area.
               </p>
               <Button
                 type="button"
@@ -251,7 +255,10 @@ export function DashboardContent() {
       </div>
 
       <div className="grid gap-4 max-md:gap-3 sm:grid-cols-2">
-        <ValleyBandRadialChart stations={stations} isLoading={stationsLoading} />
+        <ValleyBandRadialChart
+          stations={stations}
+          isLoading={stationsLoading}
+        />
         <AssessmentConfidenceRadialChart
           lastAssessment={dashboard?.last_assessment}
           isLoading={dashboardLoading}

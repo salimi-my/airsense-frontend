@@ -19,9 +19,9 @@ export default function AuthLayout({
       <Link href="/" className="absolute top-5 left-5 flex items-center gap-2">
         <div className="bg-primary text-primary-foreground dark:bg-primary flex aspect-square size-7 items-center justify-center rounded-lg">
           <Image
-            src="/vercel-logo-dark.png"
+            src="/airsense.png"
             alt={`AirSense Logo`}
-            className="-mt-[2px]"
+            className="mt-0"
             width={14}
             height={14}
           />

@@ -15,9 +15,9 @@ export function AppLogo({ name }: { name: string }) {
       <Link href="/dashboard" onClick={() => setOpenMobile(false)}>
         <div className="bg-primary text-primary-foreground dark:bg-primary flex aspect-square size-8 items-center justify-center rounded-lg">
           <Image
-            src="/vercel-logo-dark.png"
+            src="/airsense.png"
             alt={`${name} Logo`}
-            className="-mt-[2px]"
+            className="mt-0"
             width={18}
             height={18}
           />
