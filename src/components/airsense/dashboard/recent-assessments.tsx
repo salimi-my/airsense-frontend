@@ -44,8 +44,8 @@ export function RecentAssessments({
   const assessHref = stationId ? `/assess?station=${stationId}` : "/assess";
 
   return (
-    <Card className="border-sidebar-border flex h-full min-h-[420px] flex-col max-md:py-4">
-      <CardHeader className="max-md:px-4">
+    <Card className="border-sidebar-border flex h-full max-h-[420px] min-h-[420px] flex-col overflow-hidden max-md:py-4">
+      <CardHeader className="shrink-0 max-md:px-4">
         <CardTitle className="flex items-center gap-2 max-md:text-sm">
           Recent Assessments
         </CardTitle>
@@ -53,9 +53,9 @@ export function RecentAssessments({
           Your latest AI-powered health risk results
         </CardDescription>
       </CardHeader>
-      <CardContent className="flex min-h-0 flex-1 flex-col max-md:px-4">
+      <CardContent className="flex min-h-0 flex-1 flex-col overflow-hidden max-md:px-4">
         {assessments.length === 0 ? (
-          <div className="flex flex-1 flex-col justify-center">
+          <div className="flex flex-1 flex-col justify-center overflow-hidden">
             <Empty className="border-0">
             <EmptyHeader>
               <EmptyMedia variant="icon">
@@ -75,8 +75,8 @@ export function RecentAssessments({
           </Empty>
           </div>
         ) : (
-          <ScrollArea className="min-h-0 flex-1">
-            <div className="space-y-3 max-md:space-y-2">
+          <ScrollArea className="min-h-0 flex-1 overflow-hidden">
+            <div className="space-y-3 pr-3 max-md:space-y-2">
               {assessments.map((item) => (
                 <div
                   key={item.id}
@@ -120,17 +120,19 @@ export function RecentAssessments({
 
 export function RecentAssessmentsSkeleton() {
   return (
-    <Card className="border-sidebar-border flex h-full min-h-[420px] flex-col max-md:py-4">
-      <CardHeader className="max-md:px-4">
+    <Card className="border-sidebar-border flex h-full max-h-[420px] min-h-[420px] flex-col overflow-hidden max-md:py-4">
+      <CardHeader className="shrink-0 max-md:px-4">
         <Skeleton className="h-5 w-40" />
         <Skeleton className="mt-2 h-4 w-56" />
       </CardHeader>
-      <CardContent className="flex min-h-0 flex-1 flex-col max-md:px-4">
-        <div className="flex flex-1 flex-col gap-3">
-          {[...Array(4)].map((_, i) => (
-            <Skeleton key={i} className="h-16 w-full rounded-lg" />
-          ))}
-        </div>
+      <CardContent className="flex min-h-0 flex-1 flex-col overflow-hidden max-md:px-4">
+        <ScrollArea className="min-h-0 flex-1 overflow-hidden">
+          <div className="flex flex-col gap-3 pr-3">
+            {[...Array(4)].map((_, i) => (
+              <Skeleton key={i} className="h-16 w-full rounded-lg" />
+            ))}
+          </div>
+        </ScrollArea>
       </CardContent>
     </Card>
   );

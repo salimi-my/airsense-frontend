@@ -245,7 +245,7 @@ export function DashboardContent() {
             </div>
           )}
         </div>
-        <div className="flex flex-col xl:col-span-5">
+        <div className="flex min-h-0 flex-col xl:col-span-5">
           <RecentAssessments
             assessments={assessments}
             isLoading={assessmentsLoading}
