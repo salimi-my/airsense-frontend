@@ -13,6 +13,7 @@ interface User {
   avatar: string | null;
   avatar_url: string | null;
   has_password: boolean;
+  preferred_station_id: number | null;
   created_at: string;
   updated_at: string;
   two_factor_enabled: boolean;

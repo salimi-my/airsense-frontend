@@ -1,9 +1,9 @@
 import {
-  FileText,
-  Images,
-  LayoutGrid,
+  Activity,
+  LayoutDashboard,
+  MapPin,
+  ScrollText,
   Settings,
-  Tags,
   Users,
 } from "lucide-react";
 
@@ -12,66 +12,34 @@ import { PageMapping, type NavList } from "@/types";
 export const NAVLIST: NavList = {
   navGroups: [
     {
-      title: "General",
+      title: "AirSense",
       items: [
         {
           title: "Dashboard",
           url: "/dashboard",
-          icon: LayoutGrid,
+          icon: LayoutDashboard,
+        },
+        {
+          title: "Air Map",
+          url: "/map",
+          icon: MapPin,
+        },
+        {
+          title: "Risk Assessment",
+          url: "/assess",
+          icon: Activity,
         },
       ],
     },
     {
-      title: "Content",
+      title: "Administration",
       items: [
         {
-          title: "Posts",
-          icon: FileText,
-          items: [
-            {
-              title: "All Posts",
-              url: "/posts",
-            },
-            {
-              title: "Create Post",
-              url: "/posts/create",
-            },
-          ],
+          title: "System Logs",
+          url: "/admin/logs",
+          icon: ScrollText,
+          adminOnly: true,
         },
-        {
-          title: "Media",
-          icon: Images,
-          items: [
-            {
-              title: "All Media",
-              url: "/media",
-            },
-            {
-              title: "Create Media",
-              url: "/media/create",
-            },
-          ],
-        },
-
-        {
-          title: "Tags",
-          icon: Tags,
-          items: [
-            {
-              title: "All Tags",
-              url: "/tags",
-            },
-            {
-              title: "Create Tag",
-              url: "/tags/create",
-            },
-          ],
-        },
-      ],
-    },
-    {
-      title: "Account",
-      items: [
         {
           title: "Users",
           url: "/users",
@@ -88,15 +56,21 @@ export const NAVLIST: NavList = {
   ],
 };
 
-/**
- * Mapping for pages that are not directly in the nav list but should be associated with existing nav items.
- * Key: URL pattern (can be regex string or function)
- * Value: Object with title and associated nav URL
- */
 export const PAGE_MAPPING: PageMapping = {
-  // User edit pages
-  // "/users/[^/]+/edit": {
-  //   title: "Edit User",
-  //   navUrl: "/users",
-  // },
+  "/map": {
+    title: "Air Map",
+    navUrl: "/map",
+  },
+  "/stations/[^/]+": {
+    title: "Station Detail",
+    navUrl: "/map",
+  },
+  "/assess": {
+    title: "Risk Assessment",
+    navUrl: "/assess",
+  },
+  "/admin/logs": {
+    title: "System Logs",
+    navUrl: "/admin/logs",
+  },
 };

@@ -25,7 +25,7 @@ export function BreadcrumbContent() {
   const paths = usePathname();
   const pathNames = paths.split("/").filter((path) => path);
 
-  if (paths === "/dashboard") {
+  if (paths === "/dashboard" || paths === "/map") {
     return null;
   }
 

@@ -22,6 +22,19 @@ const API_ENDPOINTS = {
   TWO_FACTOR_RECOVERY_CODES: "/api/two-factor/recovery-codes",
   TWO_FACTOR_RECOVERY_CODES_REGENERATE:
     "/api/two-factor/recovery-codes/regenerate",
+  STATIONS: "/api/stations",
+  STATION: (id: number) => `/api/stations/${id}`,
+  STATION_READINGS: (id: number, days = 7) =>
+    `/api/stations/${id}/readings?days=${days}`,
+  STATION_PREDICTION: (id: number) => `/api/stations/${id}/prediction`,
+  STATION_ALERTS: "/api/stations/alerts",
+  ASSESSMENTS: "/api/assessments",
+  ADMIN_READINGS: "/api/admin/readings",
+  ADMIN_ASSESSMENTS: "/api/admin/assessments",
+  DASHBOARD: "/api/dashboard",
+  ME_ASSESSMENTS: "/api/me/assessments",
+  STATIONS_NEARBY: (lat: number, lng: number) =>
+    `/api/stations/nearby?lat=${lat}&lng=${lng}`,
   OAUTH_REDIRECT: (provider: string) => `/auth/${provider}/redirect`,
   OAUTH_LINK: (provider: string) => `/auth/${provider}/link`,
   OAUTH_UNLINK: (provider: string) => `/auth/${provider}/unlink`,

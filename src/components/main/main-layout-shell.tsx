@@ -44,11 +44,11 @@ export async function MainLayoutShell({
       <UserProvider>
         <SidebarProvider defaultOpen={defaultOpen}>
           <AppSidebar isAdmin={isAdmin} />
-          <SidebarInset className="overflow-x-hidden">
+          <SidebarInset className="min-w-0">
             <Header user={user} />
-            <div className="mt-16 flex min-h-[calc(100svh-160px)] flex-1 flex-col gap-6 p-4">
+            <div className="mt-16 flex min-h-[calc(100svh-160px)] min-w-0 flex-1 flex-col gap-6 p-4 pb-8">
               <BreadcrumbContent />
-              {children}
+              <div className="min-w-0 flex-1">{children}</div>
             </div>
             <Suspense fallback={null}>
               <Footer />
