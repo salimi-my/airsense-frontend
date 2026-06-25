@@ -19,7 +19,7 @@ export async function Footer() {
             rel="noopener noreferrer"
             className="hover:text-primary relative hidden after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0 md:inline-block"
           >
-            Airsense
+            AirSense
           </a>
         </p>
       </div>
@@ -30,7 +30,7 @@ export async function Footer() {
           rel="noopener noreferrer"
           className="hover:text-primary relative inline-block text-xs leading-tight after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0 md:hidden"
         >
-          Airsense
+          AirSense
         </a>
       </div>
     </footer>
