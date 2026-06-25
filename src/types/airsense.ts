@@ -21,6 +21,7 @@ export interface StationReading {
   humidity: number | null;
   wind_speed: number | null;
   fetched_at: string | null;
+  created_at?: string | null;
   category: string;
   color_class: AqiColorClass;
   hex_color: string;
