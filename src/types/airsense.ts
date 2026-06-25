@@ -130,6 +130,7 @@ export interface AdminReadingLog {
   station_id: number;
   aqi: number;
   fetched_at: string;
+  created_at: string;
   station?: { id: number; name: string; city: string };
 }
 

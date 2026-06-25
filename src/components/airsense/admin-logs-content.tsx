@@ -51,6 +51,7 @@ export function AdminLogsContent() {
                     <TableHead>Station</TableHead>
                     <TableHead>AQI</TableHead>
                     <TableHead>Fetched At</TableHead>
+                    <TableHead>Created At</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -80,6 +81,9 @@ export function AdminLogsContent() {
                       </TableCell>
                       <TableCell className="text-muted-foreground text-sm">
                         {new Date(row.fetched_at).toLocaleString()}
+                      </TableCell>
+                      <TableCell className="text-muted-foreground text-sm">
+                        {new Date(row.created_at).toLocaleString()}
                       </TableCell>
                     </TableRow>
                   ))}
