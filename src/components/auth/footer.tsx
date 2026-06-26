@@ -14,7 +14,7 @@ export async function Footer() {
         <p className="text-xs leading-tight">
           Designed and Developed by{" "}
           <a
-            href="https://airsense.com"
+            href="https://airsense.salimi.my"
             target="_blank"
             rel="noopener noreferrer"
             className="hover:text-primary relative hidden after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0 md:inline-block"
@@ -25,7 +25,7 @@ export async function Footer() {
       </div>
       <div className="text-muted-foreground flex items-center gap-1 px-4">
         <a
-          href="https://airsense.com"
+          href="https://airsense.salimi.my"
           target="_blank"
           rel="noopener noreferrer"
           className="hover:text-primary relative inline-block text-xs leading-tight after:absolute after:bottom-0 after:left-0 after:h-[1px] after:w-full after:origin-bottom-left after:scale-x-100 after:bg-current after:transition-transform after:duration-300 after:ease-in-out hover:after:origin-bottom-right hover:after:scale-x-0 md:hidden"

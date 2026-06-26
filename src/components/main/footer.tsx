@@ -22,7 +22,7 @@ export async function Footer() {
         <p className="text-xs leading-tight sm:text-sm">
           Designed and Developed by{" "}
           <a
-            href="https://airsense.com"
+            href="https://airsense.salimi.my"
             target="_blank"
             rel="noopener noreferrer"
             className="link-hover hidden font-semibold md:inline-block"
@@ -33,7 +33,7 @@ export async function Footer() {
       </div>
       <div className="flex items-center gap-2 px-4 max-sm:invisible">
         <a
-          href="https://airsense.com"
+          href="https://airsense.salimi.my"
           target="_blank"
           rel="noopener noreferrer"
           className="link-hover text-xs leading-tight font-semibold md:hidden"
