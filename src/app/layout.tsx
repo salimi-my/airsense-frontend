@@ -24,10 +24,34 @@ export const viewport: Viewport = {
   ],
 };
 
+const seoImage = {
+  url: "/airsense-seo-image.png",
+  width: 1200,
+  height: 628,
+  alt: "AirSense dashboard showing personalized air quality monitoring across desktop, tablet, and mobile devices",
+};
+
 export const metadata: Metadata = {
-  title: "AirSense — PersonalizedSmartAirQualityAwareness",
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_FRONTEND_URL ?? "http://localhost:3000",
+  ),
+  title: "AirSense — Personalized Smart Air Quality Awareness",
   description:
     "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
+  openGraph: {
+    title: "AirSense — Personalized Smart Air Quality Awareness",
+    description:
+      "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
+    type: "website",
+    images: [seoImage],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "AirSense — Personalized Smart Air Quality Awareness",
+    description:
+      "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
+    images: [seoImage.url],
+  },
   appleWebApp: {
     capable: true,
     title: "AirSense",
