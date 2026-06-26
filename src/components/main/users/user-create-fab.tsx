@@ -46,7 +46,7 @@ export function UserCreateFab({ mutate }: UserCreateFabProps) {
         size="icon"
         className={cn(
           "fixed right-5 z-50 mb-0! size-12 rounded-full shadow-lg",
-          isPwa ? "bottom-[calc(5rem+12px)]" : "bottom-5",
+          isPwa ? "bottom-[calc(5rem+12px)]" : "bottom-21",
         )}
         aria-label="Create new user"
         onClick={handleFabClick}

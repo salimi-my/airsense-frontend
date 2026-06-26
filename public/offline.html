@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no"
+    />
+    <meta name="theme-color" content="#0d9488" />
+    <title>Offline — AirSense</title>
+    <style>
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 1.5rem;
+        font-family:
+          system-ui,
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          sans-serif;
+        background: #f4f4f5;
+        color: #18181b;
+      }
+
+      .card {
+        width: 100%;
+        max-width: 24rem;
+        padding: 2rem 1.5rem;
+        border-radius: 0.75rem;
+        border: 1px solid #e4e4e7;
+        background: #ffffff;
+        text-align: center;
+        box-shadow: 0 1px 2px rgb(0 0 0 / 0.05);
+      }
+
+      .logo-box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 3rem;
+        height: 3rem;
+        margin: 0 auto 1rem;
+        border-radius: 0.5rem;
+        background: #0d9488;
+      }
+
+      .logo {
+        width: 2.3rem;
+        height: 2.3rem;
+        object-fit: contain;
+      }
+
+      h1 {
+        margin: 0 0 0.5rem;
+        font-size: 1.25rem;
+        font-weight: 600;
+      }
+
+      p {
+        margin: 0 0 1.5rem;
+        font-size: 0.875rem;
+        line-height: 1.5;
+        color: #71717a;
+      }
+
+      button {
+        appearance: none;
+        border: none;
+        border-radius: 0.375rem;
+        padding: 0.625rem 1rem;
+        font-size: 0.875rem;
+        font-weight: 500;
+        color: #ffffff;
+        background: #0d9488;
+        cursor: pointer;
+      }
+
+      button:active {
+        opacity: 0.9;
+      }
+
+      @media (prefers-color-scheme: dark) {
+        body {
+          background: #09090b;
+          color: #fafafa;
+        }
+
+        .card {
+          background: #18181b;
+          border-color: #27272a;
+        }
+
+        p {
+          color: #a1a1aa;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <main class="card">
+      <div class="logo-box">
+        <img
+          class="logo"
+          src="/airsense.png"
+          width="37"
+          height="37"
+          alt="AirSense"
+        />
+      </div>
+      <h1>You are offline</h1>
+      <p>
+        Check your internet connection and try again. Cached pages may still be
+        available once you reconnect.
+      </p>
+      <button type="button" onclick="window.location.reload()">
+        Try again
+      </button>
+    </main>
+  </body>
+</html>

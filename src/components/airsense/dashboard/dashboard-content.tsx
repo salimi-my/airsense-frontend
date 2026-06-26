@@ -11,7 +11,7 @@ import { AlertBanner } from "@/components/airsense/alert-banner";
 import { AQIMapDynamic } from "@/components/airsense/aqi-map-dynamic";
 import { AssessmentConfidenceRadialChart } from "@/components/airsense/dashboard/assessment-confidence-radial-chart";
 import { DashboardAdminStrip } from "@/components/airsense/dashboard/dashboard-admin-strip";
-import { DashboardTrendChartSkeleton } from "@/components/airsense/dashboard/dashboard-chart-skeletons";
+import { DashboardContentSkeleton, DashboardTrendChartSkeleton } from "@/components/airsense/dashboard/dashboard-chart-skeletons";
 import { DashboardStatsCards } from "@/components/airsense/dashboard/dashboard-stats-cards";
 import { RecentAssessments } from "@/components/airsense/dashboard/recent-assessments";
 import { ValleyBandRadialChart } from "@/components/airsense/dashboard/valley-band-radial-chart";
@@ -118,7 +118,7 @@ export function DashboardContent() {
     isResolving || geoStatus === "loading" || isUpdatingStation;
 
   if (dashboardLoading && !dashboard) {
-    return <Skeleton className="min-h-[560px] w-full rounded-2xl" />;
+    return <DashboardContentSkeleton />;
   }
 
   return (
@@ -254,18 +254,6 @@ export function DashboardContent() {
         </div>
       </div>
 
-      <div className="grid gap-4 max-md:gap-3 sm:grid-cols-2">
-        <ValleyBandRadialChart
-          stations={stations}
-          isLoading={stationsLoading}
-        />
-        <AssessmentConfidenceRadialChart
-          lastAssessment={dashboard?.last_assessment}
-          isLoading={dashboardLoading}
-          stationId={preferredStationId}
-        />
-      </div>
-
       <div className="space-y-3">
         <div className="flex items-center justify-between">
           <h2 className="text-sm font-semibold">Valley Map Preview</h2>
@@ -288,6 +276,18 @@ export function DashboardContent() {
             <Skeleton className="h-full w-full rounded-2xl" />
           )}
         </div>
+      </div>
+
+      <div className="grid gap-4 max-md:gap-3 lg:grid-cols-2">
+        <ValleyBandRadialChart
+          stations={stations}
+          isLoading={stationsLoading}
+        />
+        <AssessmentConfidenceRadialChart
+          lastAssessment={dashboard?.last_assessment}
+          isLoading={dashboardLoading}
+          stationId={preferredStationId}
+        />
       </div>
 
       {isAdmin && dashboard?.admin && (

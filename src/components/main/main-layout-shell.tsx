@@ -3,6 +3,7 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 
 import { AppSidebar } from "@/components/main/app-sidebar";
+import { BottomNav } from "@/components/main/bottom-nav";
 import { BreadcrumbContent } from "@/components/main/breadcrumb-content";
 import { Footer } from "@/components/main/footer";
 import { Header } from "@/components/main/header";
@@ -46,13 +47,14 @@ export async function MainLayoutShell({
           <AppSidebar isAdmin={isAdmin} />
           <SidebarInset className="min-w-0">
             <Header user={user} />
-            <div className="mt-16 flex min-h-[calc(100svh-160px)] min-w-0 flex-1 flex-col gap-6 p-4 pb-8">
+            <div className="mt-16 flex min-h-[calc(100svh-160px)] min-w-0 flex-1 flex-col gap-6 p-4">
               <BreadcrumbContent />
               <div className="min-w-0 flex-1">{children}</div>
             </div>
             <Suspense fallback={null}>
               <Footer />
             </Suspense>
+            <BottomNav isAdmin={isAdmin} />
           </SidebarInset>
         </SidebarProvider>
       </UserProvider>

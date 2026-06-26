@@ -4,6 +4,7 @@ import { AlertTriangle, ClipboardList, Database } from "lucide-react";
 import Link from "next/link";
 
 import type { DashboardAdminStats } from "@/types/airsense";
+import { cn } from "@/lib/utils";
 
 interface DashboardAdminStripProps {
   admin: DashboardAdminStats;
@@ -44,6 +45,7 @@ export function DashboardAdminStrip({ admin }: DashboardAdminStripProps) {
           }
           icon={Database}
           isText
+          className="col-span-2 xl:col-span-1"
         />
       </div>
     </div>
@@ -56,15 +58,17 @@ function AdminCard({
   icon: Icon,
   accent,
   isText = false,
+  className,
 }: {
   label: string;
   value: number | string;
   icon: React.ComponentType<{ className?: string }>;
   accent?: string;
   isText?: boolean;
+  className?: string;
 }) {
   return (
-    <div className="airsense-surface rounded-xl p-4">
+    <div className={cn("airsense-surface rounded-xl p-4", className)}>
       <div className="mb-2 flex items-center justify-between">
         <p className="text-muted-foreground text-xs font-medium uppercase tracking-wide">
           {label}

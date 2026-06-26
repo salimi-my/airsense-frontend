@@ -74,13 +74,13 @@ export function Header({ user }: HeaderProps) {
     <>
       <div
         className={cn(
-          "bg-header fixed top-0 z-10 h-8",
+          "bg-header fixed top-0 z-30 h-8",
           HEADER_MAX_LAYOUT_CLASSES,
         )}
       />
       <header
         className={cn(
-          "border-header bg-header fixed top-2 z-10 flex shrink-0 flex-col justify-center rounded-lg border px-2.5",
+          "border-header bg-header fixed top-2 z-30 flex shrink-0 flex-col justify-center rounded-lg border px-2.5",
           headerLayoutClasses,
           scrolled && "border-sidebar-border bg-sidebar shadow-md",
         )}

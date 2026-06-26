@@ -2,8 +2,8 @@ import { Metadata } from "next";
 import { Suspense } from "react";
 
 import { DashboardContent } from "@/components/airsense/dashboard/dashboard-content";
+import { DashboardContentSkeleton } from "@/components/airsense/dashboard/dashboard-chart-skeletons";
 import { OAuthDashboardMessageHandler } from "@/components/main/oauth-dashboard-message-handler";
-import { Skeleton } from "@/components/ui/skeleton";
 
 export const metadata: Metadata = {
   title: "Dashboard — AirSense",
@@ -17,7 +17,7 @@ export default function DashboardPage() {
       <Suspense fallback={null}>
         <OAuthDashboardMessageHandler />
       </Suspense>
-      <Suspense fallback={<Skeleton className="min-h-[500px] w-full rounded-lg" />}>
+      <Suspense fallback={<DashboardContentSkeleton />}>
         <DashboardContent />
       </Suspense>
     </div>

@@ -34,7 +34,7 @@ export function AQIMap({
     <MapContainer
       center={[3.139, 101.687]}
       zoom={10}
-      className={className ?? "w-full"}
+      className={className ?? "relative z-0 w-full"}
       style={{ minHeight }}
       scrollWheelZoom
     >
