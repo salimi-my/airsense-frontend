@@ -7,6 +7,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontVariables } from "@/lib/fonts";
+import { getSiteUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { Geist } from "next/font/google";
 
@@ -24,35 +25,40 @@ export const viewport: Viewport = {
   ],
 };
 
-const seoImage = {
-  url: "/airsense-seo-image.png",
-  width: 1200,
-  height: 628,
-  alt: "AirSense dashboard showing personalized air quality monitoring across desktop, tablet, and mobile devices",
-};
+const SITE_TITLE = "AirSense — Personalized Smart Air Quality Awareness";
+const SITE_DESCRIPTION =
+  "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.";
 
-export const metadata: Metadata = {
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_FRONTEND_URL ?? "http://localhost:3000",
-  ),
-  title: "AirSense — Personalized Smart Air Quality Awareness",
-  description:
-    "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
-  openGraph: {
-    title: "AirSense — Personalized Smart Air Quality Awareness",
-    description:
-      "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
-    type: "website",
-    images: [seoImage],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "AirSense — Personalized Smart Air Quality Awareness",
-    description:
-      "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.",
-    images: [seoImage.url],
-  },
-  appleWebApp: {
+const SEO_IMAGE_PATH = "/airsense-seo-image.png";
+
+export async function generateMetadata(): Promise<Metadata> {
+  const siteUrl = await getSiteUrl();
+  const seoImageUrl = new URL(SEO_IMAGE_PATH, `${siteUrl}/`).toString();
+
+  return {
+    metadataBase: new URL(siteUrl),
+    title: SITE_TITLE,
+    description: SITE_DESCRIPTION,
+    openGraph: {
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      type: "website",
+      images: [
+        {
+          url: seoImageUrl,
+          width: 1200,
+          height: 628,
+          alt: "AirSense dashboard showing personalized air quality monitoring across desktop, tablet, and mobile devices",
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: SITE_TITLE,
+      description: SITE_DESCRIPTION,
+      images: [seoImageUrl],
+    },
+    appleWebApp: {
     capable: true,
     title: "AirSense",
     statusBarStyle: "default",
@@ -282,7 +288,8 @@ export const metadata: Metadata = {
   icons: {
     apple: "/favicons/icon-180x180.png",
   },
-};
+  };
+}
 
 export default function RootLayout({
   children,
