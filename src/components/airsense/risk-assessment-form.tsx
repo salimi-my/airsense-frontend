@@ -8,6 +8,8 @@ import { Controller, useForm } from "react-hook-form";
 import { toast } from "sonner";
 
 import { RiskCard } from "@/components/airsense/airsense-cards";
+import { PersonalRiskAlertBanner } from "@/components/airsense/personal-risk-alert-banner";
+import { RiskAssessmentLoadingCard } from "@/components/airsense/risk-assessment-loading-card";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
 import {
@@ -154,7 +156,12 @@ export function RiskAssessmentForm() {
   }
 
   return (
-    <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
+    <div className="space-y-4">
+      {result && (result.risk === "High" || result.risk === "Critical") && (
+        <PersonalRiskAlertBanner risk={result.risk} advice={result.advice} />
+      )}
+
+      <div className="grid gap-6 lg:grid-cols-2 lg:items-stretch">
       <div className="airsense-surface flex flex-col rounded-2xl p-6 md:p-8">
         <h2 className="mb-6 text-lg font-semibold">Your Health Profile</h2>
         <form onSubmit={form.handleSubmit(onSubmit)}>
@@ -306,7 +313,9 @@ export function RiskAssessmentForm() {
       </div>
 
       <div className="flex min-h-0 flex-col">
-        {result ? (
+        {submitting ? (
+          <RiskAssessmentLoadingCard className="flex-1" />
+        ) : result ? (
           <RiskCard assessment={result} className="flex-1" />
         ) : (
           <div className="airsense-surface text-muted-foreground flex flex-1 flex-col items-center justify-center rounded-2xl p-8 text-center text-sm">
@@ -318,6 +327,7 @@ export function RiskAssessmentForm() {
           </div>
         )}
       </div>
+    </div>
     </div>
   );
 }

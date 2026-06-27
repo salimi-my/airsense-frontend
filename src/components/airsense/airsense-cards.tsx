@@ -82,7 +82,7 @@ export function RiskCard({
         )}
 
         <p className="text-muted-foreground text-xs italic">
-          AI-generated estimate for awareness only. Not medical advice.
+          AirSense provides informational guidance only and is not a substitute for medical advice.
         </p>
       </div>
     </div>

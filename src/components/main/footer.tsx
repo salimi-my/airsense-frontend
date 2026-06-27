@@ -12,7 +12,7 @@ export async function Footer() {
         height: "calc(4rem + max(env(safe-area-inset-bottom), 0px))",
         paddingBottom: "env(safe-area-inset-bottom)",
       }}
-      className="flex h-16 shrink-0 flex-col justify-center gap-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 md:items-start"
+      className="flex min-h-16 shrink-0 flex-col justify-center gap-2 py-2 transition-[width,height] ease-linear group-has-[[data-collapsible=icon]]/sidebar-wrapper:h-12 md:items-start"
     >
       <div className="flex items-center gap-2 px-4 max-sm:invisible">
         <p className="text-xs leading-tight text-nowrap sm:text-sm">
@@ -40,6 +40,12 @@ export async function Footer() {
         >
           AirSense
         </a>
+      </div>
+      <div className="-mt-3 px-4 max-sm:invisible">
+        <p className="text-muted-foreground text-xs leading-tight sm:text-sm">
+          AirSense provides informational guidance only and is not a substitute
+          for medical advice.
+        </p>
       </div>
     </footer>
   );
