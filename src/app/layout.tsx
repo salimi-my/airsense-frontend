@@ -7,7 +7,6 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Toaster } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { fontVariables } from "@/lib/fonts";
-import { getSiteUrl } from "@/lib/site-url";
 import { cn } from "@/lib/utils";
 import { Geist } from "next/font/google";
 
@@ -30,13 +29,12 @@ const SITE_DESCRIPTION =
   "AirSense delivers real-time air quality data, pollution trends, and AI-powered personalized health risk alerts for urban Malaysians facing haze and pollution.";
 
 const SEO_IMAGE_PATH = "/airsense-seo-image.png";
+const SITE_URL =
+  process.env.NEXT_PUBLIC_FRONTEND_URL?.replace(/\/$/, "") ??
+  "http://localhost:3000";
 
-export async function generateMetadata(): Promise<Metadata> {
-  const siteUrl = await getSiteUrl();
-  const seoImageUrl = new URL(SEO_IMAGE_PATH, `${siteUrl}/`).toString();
-
-  return {
-    metadataBase: new URL(siteUrl),
+export const metadata: Metadata = {
+  metadataBase: new URL(SITE_URL),
     title: SITE_TITLE,
     description: SITE_DESCRIPTION,
     openGraph: {
@@ -45,7 +43,7 @@ export async function generateMetadata(): Promise<Metadata> {
       type: "website",
       images: [
         {
-          url: seoImageUrl,
+          url: SEO_IMAGE_PATH,
           width: 1200,
           height: 628,
           alt: "AirSense dashboard showing personalized air quality monitoring across desktop, tablet, and mobile devices",
@@ -56,7 +54,7 @@ export async function generateMetadata(): Promise<Metadata> {
       card: "summary_large_image",
       title: SITE_TITLE,
       description: SITE_DESCRIPTION,
-      images: [seoImageUrl],
+      images: [SEO_IMAGE_PATH],
     },
     appleWebApp: {
     capable: true,
@@ -288,8 +286,7 @@ export async function generateMetadata(): Promise<Metadata> {
   icons: {
     apple: "/favicons/icon-180x180.png",
   },
-  };
-}
+};
 
 export default function RootLayout({
   children,
